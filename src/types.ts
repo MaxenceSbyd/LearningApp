@@ -2,12 +2,13 @@ export type LangCode = 'fr' | 'ja';
 
 export interface VocabItem {
   id: string;
-  term: string;          // The word in the target language
-  reading?: string;      // Romaji or pronunciation guide
-  translation: string;   // English translation
-  example?: string;      // Example sentence in target language
+  term: string;
+  reading?: string;
+  translation: string;
+  example?: string;
   exampleTranslation?: string;
-  notes?: string;        // Optional tip
+  notes?: string;
+  theme: string;
 }
 
 export interface GrammarLesson {
@@ -16,7 +17,7 @@ export interface GrammarLesson {
   level: 'A1' | 'A2' | 'beginner';
   intro: string;
   rule: string;
-  why: string;           // The "why" behind the rule — user requirement
+  why: string;
   examples: { source: string; translation: string }[];
 }
 
@@ -28,13 +29,45 @@ export interface QuizQuestion {
   explanation?: string;
 }
 
+export interface Unit {
+  id: string;
+  theme: string;
+  icon: string;
+  label: string;
+}
+
 export interface LanguagePack {
   code: LangCode;
-  name: string;          // "Français" / "日本語"
-  englishName: string;   // "French" / "Japanese"
-  flag: string;          // emoji or short text
+  name: string;
+  englishName: string;
+  flag: string;
   introNote: string;
   vocab: VocabItem[];
   grammar: GrammarLesson[];
   quiz: QuizQuestion[];
+  units: Unit[];
 }
+
+// ── Exercise types ───────────────────────────────────────────────────────────
+
+export interface MCWordExercise {
+  kind: 'mc-word';
+  term: string;
+  reading?: string;
+  correctTranslation: string;
+  options: string[];
+}
+
+export interface MCReverseExercise {
+  kind: 'mc-reverse';
+  translation: string;
+  correctTerm: string;
+  options: string[];
+}
+
+export interface PairMatchExercise {
+  kind: 'pair-match';
+  pairs: { term: string; translation: string; reading?: string }[];
+}
+
+export type Exercise = MCWordExercise | MCReverseExercise | PairMatchExercise;

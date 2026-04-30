@@ -1,8 +1,12 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { loadProgress } from '../lib/progress';
 
 export default function Layout() {
   const location = useLocation();
   const onHome = location.pathname === '/';
+  const progress = loadProgress();
+  const xp = progress.xp ?? 0;
+  const streak = progress.streak?.count ?? 0;
 
   return (
     <div className="min-h-screen flex flex-col bg-ivory text-charcoal">
@@ -14,14 +18,29 @@ export default function Layout() {
           >
             Learning
           </Link>
-          {!onHome && (
-            <Link
-              to="/"
-              className="text-xs uppercase tracking-[0.2em] text-warm-grey hover:text-sage transition-colors"
-            >
-              ← Home
-            </Link>
-          )}
+
+          <div className="flex items-center gap-4">
+            {streak > 0 && (
+              <div className="flex items-center gap-1.5 text-sm text-charcoal">
+                <span className="text-base">🔥</span>
+                <span className="font-medium">{streak}</span>
+              </div>
+            )}
+            {xp > 0 && (
+              <div className="flex items-center gap-1.5 text-sm text-charcoal">
+                <span className="text-base">⭐</span>
+                <span className="font-medium">{xp} XP</span>
+              </div>
+            )}
+            {!onHome && (
+              <Link
+                to="/"
+                className="text-xs uppercase tracking-[0.2em] text-warm-grey hover:text-sage transition-colors"
+              >
+                ← Home
+              </Link>
+            )}
+          </div>
         </div>
       </header>
 

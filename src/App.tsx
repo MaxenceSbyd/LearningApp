@@ -5,6 +5,7 @@ import LanguageHome from './pages/LanguageHome';
 import Vocab from './pages/Vocab';
 import Grammar from './pages/Grammar';
 import Quiz from './pages/Quiz';
+import Lesson from './pages/Lesson';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="learn/:lang/grammar" element={<Grammar />} />
         <Route path="learn/:lang/grammar/:lessonId" element={<Grammar />} />
         <Route path="learn/:lang/quiz" element={<Quiz />} />
+        <Route path="learn/:lang/lesson/:theme" element={<Lesson />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
