@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  /* Editorial Ivory palette — same family as Maxence's portfolio */
+  --color-ivory: #FAF7F1;
+  --color-sand: #F2EBDF;
+  --color-pale: #F5F0E5;
+  --color-taupe: #E5DCC9;
+  --color-taupe-strong: #D4C9B3;
+  --color-charcoal: #2D2A26;
+  --color-warm-grey: #6B645A;
+  --color-sage: #5C8775;
+  --color-sage-soft: #A6BDB1;
+  --color-bronze: #B59B6F;
+
+  --font-display: 'Italiana', serif;
+  --font-script: 'Allura', cursive;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-sage);
+  color: var(--color-ivory);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-taupe-strong);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-bronze);
+}
